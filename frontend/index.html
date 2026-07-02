@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Healthcare Content Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">✎</span>
+    <div class="brand-text">
+      <span class="brand-name">Content Intelligence</span>
+      <span class="brand-sub">Gap Analysis · Clustering · Briefs · Schema · Review</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">From keyword research to AI-ready content in minutes</p>
+    <h1>Give every disease and treatment page <span class="accent">what AI engines look for</span> — before you publish.</h1>
+  </section>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="gap">Content Gap</button>
+    <button class="tab" data-tab="cluster">Keyword Clustering</button>
+    <button class="tab" data-tab="brief">Content Brief</button>
+    <button class="tab" data-tab="schema">Schema Generator</button>
+    <button class="tab" data-tab="review">Content Review</button>
+  </nav>
+
+  <!-- GAP ANALYSIS -->
+  <section class="tab-panel active" id="panel-gap">
+    <div class="panel">
+      <h2>Content gap analysis</h2>
+      <p class="panel-note">Fetches both live pages and checks coverage against a curated taxonomy of common hospital-site topics (diseases, treatments, departments).</p>
+      <form id="gapForm" class="stack-form">
+        <label>Your site page<input type="text" id="gapSite" placeholder="yourhospital.com/diseases" required /></label>
+        <label>Competitor page<input type="text" id="gapCompetitor" placeholder="competitor.com/diseases" required /></label>
+        <button type="submit">Run gap analysis</button>
+      </form>
+      <div id="gapResults" class="result-area"></div>
+    </div>
+  </section>
+
+  <!-- KEYWORD CLUSTERING -->
+  <section class="tab-panel" id="panel-cluster">
+    <div class="panel">
+      <h2>Keyword clustering</h2>
+      <p class="panel-note">Paste raw keywords (comma or newline separated). They'll be grouped by search intent under a pillar topic.</p>
+      <form id="clusterForm" class="stack-form">
+        <label>Pillar topic (optional — auto-detected if left blank)<input type="text" id="clusterPillar" placeholder="Diabetes" /></label>
+        <label>Keywords<textarea id="clusterKeywords" rows="6" placeholder="diabetes symptoms
+diabetes causes
+diabetes treatment cost
+best diabetes doctor near me
+diabetes diet plan" required></textarea></label>
+        <button type="submit">Cluster keywords</button>
+      </form>
+      <div id="clusterResults" class="result-area"></div>
+    </div>
+  </section>
+
+  <!-- CONTENT BRIEF -->
+  <section class="tab-panel" id="panel-brief">
+    <div class="panel">
+      <h2>AI content brief generator</h2>
+      <p class="panel-note">Generates title, meta description, heading structure, FAQs, schema, internal-link plan, and an E-E-A-T checklist for a topic.</p>
+      <form id="briefForm" class="stack-form">
+        <label>Topic<input type="text" id="briefTopic" placeholder="Diabetes" required /></label>
+        <label>Content type
+          <select id="briefType">
+            <option value="disease">Disease / condition page</option>
+            <option value="treatment">Treatment / procedure page</option>
+          </select>
+        </label>
+        <label>Brand name<input type="text" id="briefBrand" placeholder="Your Hospital" /></label>
+        <button type="submit">Generate brief</button>
+      </form>
+      <div id="briefResults" class="result-area"></div>
+    </div>
+  </section>
+
+  <!-- SCHEMA GENERATOR -->
+  <section class="tab-panel" id="panel-schema">
+    <div class="panel">
+      <h2>Schema generator</h2>
+      <p class="panel-note">Produces valid, ready-to-paste JSON-LD.</p>
+      <form id="schemaForm" class="stack-form">
+        <label>Schema type
+          <select id="schemaType">
+            <option value="MedicalCondition">MedicalCondition</option>
+            <option value="MedicalTherapy">MedicalTherapy</option>
+            <option value="MedicalOrganization">MedicalOrganization</option>
+            <option value="Physician">Physician</option>
+            <option value="LocalBusiness">LocalBusiness</option>
+          </select>
+        </label>
+        <label>Name<input type="text" id="schemaName" placeholder="Diabetes" required /></label>
+        <label>Description<textarea id="schemaDescription" rows="2" placeholder="A brief description"></textarea></label>
+        <label>Extra (comma-separated — treatments/symptoms/specialties, context depends on type)<input type="text" id="schemaExtra" placeholder="Insulin therapy, Diet management" /></label>
+        <button type="submit">Generate schema</button>
+      </form>
+      <div id="schemaResults" class="result-area"></div>
+    </div>
+  </section>
+
+  <!-- CONTENT REVIEW -->
+  <section class="tab-panel" id="panel-review">
+    <div class="panel">
+      <h2>Content review</h2>
+      <p class="panel-note">Paste a draft. Get real readability scoring plus heuristic trust/E-E-A-T and entity-coverage signals.</p>
+      <form id="reviewForm" class="stack-form">
+        <label>Content<textarea id="reviewText" rows="10" placeholder="Paste your article draft here..." required></textarea></label>
+        <button type="submit">Review content</button>
+      </form>
+      <div id="reviewResults" class="result-area"></div>
+    </div>
+  </section>
+
+  <section id="errorBox" class="panel error-panel hidden"></section>
+</main>
+
+<footer>
+  <span>AI Healthcare Content Intelligence Platform — module of the Growth OS suite.</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
