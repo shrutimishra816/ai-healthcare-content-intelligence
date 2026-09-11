@@ -7,6 +7,11 @@ Kept in sync with backend/main.py and its sibling modules, which remain
 the canonical source for local development (`uvicorn main:app`) and Docker.
 """
 
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import requests
 from fastapi import FastAPI, HTTPException, Query, Body
 from fastapi.middleware.cors import CORSMiddleware
