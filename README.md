@@ -40,7 +40,19 @@ python -m uvicorn main:app --reload --port 8000
 
 Open **http://localhost:8000**.
 
-## Run it with Docker
+## Deploying so others can use it
+
+**Vercel (this repo is pre-configured for it):**
+The `api/` and `public/` directories at the repo root are a Vercel-ready
+mirror of `backend/` and `frontend/` — `api/index.py` exposes the FastAPI
+`app`, and everything in `public/` (index.html, style.css, app.js) is
+served automatically as static assets. Import the repo at
+[vercel.com/new](https://vercel.com/new) and deploy with defaults — no
+config needed. `api/` and `public/` are kept in sync with `backend/` and
+`frontend/`, which remain the source of truth for local development.
+
+**Run it with Docker** (any other container host — Render, Railway,
+Fly.io, Google Cloud Run):
 
 ```bash
 docker build -t ai-healthcare-content-intelligence .
